@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="/css/app.css" type="text/css" rel="stylesheet">
+    <link href="/css/trix.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap" rel="stylesheet"> 
+    
+    <title>{{nombrePagina}}</title>
+</head>
+<body>
+    <div class="nombre-sitio contenedor">
+        <h1>
+            <a href="/">devJobs</a>
+        </h1>
+        {{#if barra}}
+            <div class="buscador">
+                <form action="/buscador" method="POST">
+                    <input type="text" name="q" class="buscar">
+                    <input type="submit" value="Buscar">
+                </form>
+            </div>
+        {{/if}}
+        {{#if cerrarSesion}}
+            <div class="cerrar-sesion">
+                <p>Hola, {{nombre}} !</p>
+                {{#if imagen}}
+                    <img src="/uploads/perfiles/{{imagen}}" class="admin-perfil">
+                {{/if}}
+                <a href="/admin-dashboard">Administracion</a>
+                <a href="/cerrar-sesion">Cerrar Sesion</a>
+            </div>
+        {{/if}}
+    </div>
+    <header class="site-header contenedor separador">
+        <h2>{{nombrePagina}}</h2>
+        {{#if tagline}}
+            <p class="tagline">{{tagline}}</p>
+        {{/if}}
+        {{#if boton}}
+            <a href="/vacantes/nueva" class="btn btn-azul">Publicar Nueva vacante</a>
+        {{/if}}
+    </header>
+    <div class="contenido-principal contenedor">
+        {{#if mensajes}}
+            <div class="alertas">
+                {{#mostrarAlertas mensajes}}
+                {{/mostrarAlertas}}
+            </div>
+        {{/if}}
+        {{{body}}}
+    </div>
+    <script src="/js/trix.js"></script>
+    <script src="/dist/bundle.js"></script>
+</body>
+</html>
